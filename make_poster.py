@@ -1,4 +1,4 @@
-# make_poster.py
+# file make_poster.py
 from poster_designer import build_poster
 
 if __name__ == "__main__":
