@@ -1,0 +1,52 @@
+{
+  "page_mm": [1800, 1200],
+  "title": "Hydro-Transformer: Learning Streamflow Patterns Across River Networks",
+  "subtitle": "Historical Streamflow Reconstruction with High-Confidence Gage Estimates",
+  "authors": "T. Akinrele, J. James, R. Rahimi, A. Mittal",
+  "affiliations": "The University of Alabama · Alabama Water Institute · CIROH",
+  "logos": [],
+  "theme": "light",
+  "layout": {
+    "columns": 3,
+    "margins_mm": 30,
+    "gutter_mm": 18,
+    "titleband_mm": 120,
+    "section_title_size": 44,
+    "body_size": 28,
+    "bullet_indent_mm": 8
+  },
+  "sections": [
+    {
+      "title": "Background",
+      "body": "Hydrologic prediction in ungauged basins is a central challenge. We leverage transformers to capture long-range dependencies across space and time while respecting upstream–downstream structure.",
+      "bullets": [
+        "Dataset: NWM v3.0 retrospective, 1979–2022",
+        "Targets: Daily streamflow; basins with and without gages",
+        "Evaluation: NSE, KGE, RMSE, Pearson-r"
+      ]
+    },
+    {
+      "title": "Methods",
+      "body": "We construct upstream–downstream pairs and encode static attributes and dynamic forcings. The encoder models seasonal and event-scale context. The decoder predicts discharge.",
+      "bullets": [
+        "Sequence length: 512 hours (sliding windows)",
+        "Static plus dynamic embeddings",
+        "Training: AdamW with early stopping"
+      ]
+    },
+    {
+      "title": "Results",
+      "body": "Transformers outperform LSTMs on median NSE, especially in snow-influenced regions.",
+      "bullets": [
+        "Higher median NSE",
+        "Lower peak timing error",
+        "Better generalization for PUB"
+      ]
+    },
+    {
+      "title": "Conclusion",
+      "body": "Hydro-Transformer provides a promising path to robust predictions in ungauged basins and supports operational forecasting."
+    }
+  ],
+  "footer": "Contact: taye@ua.edu | Poster generated with Python (ReportLab)"
+}
