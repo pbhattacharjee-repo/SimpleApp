@@ -75,8 +75,8 @@ def read_file():
 @app.route('/greet')
 def greet():
     name = request.args.get('name', 'Guest')
-    template = f'<h1>Hello {name}!</h1>'
-    return render_template_string(template)
+    template = '<h1>Hello {{ name }}!</h1>'
+    return render_template_string(template, name=name)
 
 @app.route('/load_data', methods=['POST'])
 def load_data():
