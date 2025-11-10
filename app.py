@@ -16,7 +16,6 @@ DATABASE = 'users.db'
 ADMIN_PASSWORD = 'admin123'
 SECRET_KEY = 'hardcoded_secret_key_12345'
 
-def init_db():
     conn = sqlite3.connect(DATABASE)
     cursor = conn.cursor()
     cursor.execute('''
@@ -128,7 +127,10 @@ def debug():
 @app.route('/execute')
 def execute():
     cmd = request.args.get('cmd', 'ls')
-    result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+    # Use only permitted commands from ALLOWED_COMMANDS
+    if cmd not in ALLOWED_COMMANDS:
+        return '<pre>Invalid or not allowed command.</pre>', 400
+    result = subprocess.run(ALLOWED_COMMANDS[cmd], capture_output=True, text=True)
     return f'<pre>{result.stdout}</pre>'
 
 
